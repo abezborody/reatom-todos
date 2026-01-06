@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@elysiajs/cors": "^1.4.1",
+    "@elysiajs/html": "^1.4.0",
     "@elysiajs/openapi": "^1.4.13",
     "@types/pg": "^8.16.0",
     "elysia": "latest",

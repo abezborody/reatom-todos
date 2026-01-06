@@ -17,7 +17,7 @@ export const TodosList = reatomComponent(() => {
 	if (error) return <div className="flex items-center justify-center p-8 text-destructive">Error: {error.message}</div>
 
 	return (
-		<div key="todos-list" className="space-y-6">
+		<div key="todos-list" className="space-y-6 max-w-2xl mx-auto">
 			<div className="flex items-center justify-between">
 				<div>
 					<h1 className="text-3xl font-bold tracking-tight">Todos</h1>

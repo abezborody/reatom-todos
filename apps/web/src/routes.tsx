@@ -1,4 +1,4 @@
-import { reatomRoute, wrap, type RouteChild } from "@reatom/core";
+import { reatomForm, reatomRoute, wrap, type RouteChild } from "@reatom/core";
 import { Home } from "./pages/home";
 import { TodoPage } from "./pages/$todoId";
 import { Header } from "./components/header/header";
@@ -65,6 +65,38 @@ export const todoRoute = layoutRoute.reatomRoute({
 		return <TodoPage />;
 	},
 });
+
+export const editTodo = todoRoute.reatomRoute({
+	path: "edit",
+	async loader() {
+		const todo = todoRoute.loader.data()
+
+		if (!todo) {
+			throw new Error("Todo not found")
+		}
+
+		const editTodoForm = reatomForm(
+			{ name: todo.title, bio: todo?.description },
+			{
+				onSubmit: async (values) => {
+					if (editTodoForm.focus().dirty) {
+						await wrap(
+							fetch(`/api/todos/${todo.id}`, {
+								method: 'PUT',
+								body: JSON.stringify(values),
+							}),
+						)
+					}
+				},
+				name: `editTodoForm#${todo.id}`,
+			},
+		)
+		return {
+			todo,
+			editTodoForm
+		}
+	}
+})
 
 export const loginRoute = layoutRoute.reatomRoute({
 	path: "login",

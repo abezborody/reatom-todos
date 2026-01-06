@@ -15,7 +15,7 @@ export const TodoPage = reatomComponent(() => {
 	if (error) return <div className="flex items-center justify-center p-8 text-destructive">Error: {error.message}</div>
 
 	return (
-		<div key="todo-page" className="space-y-4">
+		<div key="todo-page" className="space-y-4 mx-auto max-w-2xl">
 			<Button variant="ghost" size="sm" className="gap-2" onClick={() => todosRoute.go()}>
 				<ArrowLeft className="size-4" />
 				Back to Todos
@@ -47,12 +47,6 @@ export const TodoPage = reatomComponent(() => {
 							</p>
 						</div>
 
-						{todo?.due_date && (
-							<div>
-								<h4 className="text-sm font-medium text-muted-foreground mb-2">Due Date</h4>
-								<p className="text-sm">{new Date(todo.due_date).toLocaleDateString()}</p>
-							</div>
-						)}
 					</div>
 				</CardContent>
 
