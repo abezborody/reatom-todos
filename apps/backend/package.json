@@ -1,0 +1,22 @@
+{
+  "name": "elysia-test",
+  "version": "1.0.50",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "bun run --watch src/index.ts",
+    "generate:types": "curl -s http://localhost:3000/swagger/json > openapi.json",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@elysiajs/cors": "^1.4.1",
+    "@elysiajs/openapi": "^1.4.13",
+    "@types/pg": "^8.16.0",
+    "elysia": "latest",
+    "pg": "^8.16.3"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.3",
+    "bun-types": "latest"
+  },
+  "module": "src/index.js"
+}

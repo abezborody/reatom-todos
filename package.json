@@ -1,0 +1,21 @@
+{
+  "name": "reatom-todos",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "packageManager": "bun@1.3.5",
+  "devDependencies": {
+    "@types/bun": "latest",
+    "turbo": "^2.7.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "dependencies": {
+    "dotenv": "^17.2.3"
+  }
+}
