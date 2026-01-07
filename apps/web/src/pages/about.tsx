@@ -1,3 +1,3 @@
 export const About = () => {
-	return <div className="max-w-2xl mx-auto">About</div>;
+	return <div className="max-w-2xl mx-auto" >About</div>;
 };

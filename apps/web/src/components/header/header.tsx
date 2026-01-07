@@ -1,5 +1,5 @@
 import { reatomComponent } from "@reatom/react";
-import { aboutRoute, homeRoute, loginRoute, todosRoute } from "../../routes";
+import { aboutRoute, todosRoute } from "../../routes";
 import { Button } from "../ui/button";
 import { ButtonGroup } from "../ui/button-group";
 
@@ -11,9 +11,9 @@ export const Header = reatomComponent(() => {
 			<div>
 				<ButtonGroup>
 
-					<Button size="sm" variant={homeRoute.exact() ? "default" : "outline"} onClick={() => homeRoute.go()}>
+					{/* <Button size="sm" variant={homeRoute.exact() ? "default" : "outline"} onClick={() => homeRoute.go()}>
 						Home
-					</Button>
+					</Button> */}
 					<Button size="sm" variant={todosRoute.exact() ? "default" : "outline"}
 						onClick={() => todosRoute.go()}
 					>
@@ -30,7 +30,7 @@ export const Header = reatomComponent(() => {
 					</Button> */}
 				</ButtonGroup>
 			</div>
-			<Button size="sm" variant="default" onClick={() => loginRoute.go()}>Login</Button>
+			{/* <Button size="sm" variant="default" onClick={() => loginRoute.go()}>Login</Button> */}
 		</nav>
 	);
 });

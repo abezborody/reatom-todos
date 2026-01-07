@@ -1,9 +1,9 @@
 import { reatomComponent } from "@reatom/react";
-import { todoRoute, todosRoute } from "../routes";
+import { editTodoRoute, todoRoute, todosRoute } from "../routes";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Calendar, CheckCircle2, Circle, ArrowLeft } from "lucide-react";
+import { Calendar, CheckCircle2, Circle, ArrowLeft, Edit2 } from "lucide-react";
 
 export const TodoPage = reatomComponent(() => {
 	if (!todoRoute.exact()) return null
@@ -11,15 +11,17 @@ export const TodoPage = reatomComponent(() => {
 	const ready = todoRoute.loader.ready()
 	const todo = todoRoute.loader.data()
 	const error = todoRoute.loader.error()
-	if (!ready) return <div className="flex items-center justify-center p-8">Loading...</div>
+	if (!todo) return null
+	if (!ready || !todo) return <div className="flex items-center justify-center p-8 bg-red-500">Loading...</div>
 	if (error) return <div className="flex items-center justify-center p-8 text-destructive">Error: {error.message}</div>
 
 	return (
-		<div key="todo-page" className="space-y-4 mx-auto max-w-2xl">
+		<div className="space-y-4 mx-auto max-w-2xl">
 			<Button variant="ghost" size="sm" className="gap-2" onClick={() => todosRoute.go()}>
 				<ArrowLeft className="size-4" />
 				Back to Todos
 			</Button>
+
 
 			<Card className="max-w-2xl">
 				<CardHeader>
@@ -51,9 +53,9 @@ export const TodoPage = reatomComponent(() => {
 				</CardContent>
 
 				<CardFooter className="gap-2">
-					{/* <Button variant="outline" size="sm">
-						Edit Todo
-					</Button> */}
+					<Button variant="secondary" size="sm" onClick={() => editTodoRoute.go({ todoId: todo.id })}>
+						<Edit2 /> Edit Todo
+					</Button>
 					<Button variant="default" size="sm">
 						{todo?.completed ? "Mark as Incomplete" : "Mark as Complete"}
 					</Button>
